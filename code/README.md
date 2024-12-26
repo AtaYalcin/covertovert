@@ -37,13 +37,3 @@ threshold: The size threshold to differentiate between '0' and '1' bits.
 
 These parameters can be adjusted in the config.json file to optimize the channel's performance and stealth.
 
-
-# Limitations and Considerations
-The channel's capacity is limited by the network's bandwidth and latency.
-Extreme packet size variations might be detected by network monitoring tools.
-The effectiveness of the channel may be reduced in networks with high packet loss or significant jitter.
-Usage
-Set the desired parameters in the config.json file.
-Run make receive on the receiver container to start listening for covert messages.
-Run make send on the sender container to transmit a covert message.
-Use make compare to verify if the message was successfully transmitted.
