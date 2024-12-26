@@ -35,7 +35,7 @@ class MyCovertChannel(CovertChannelBase):
         # End timing and calculate capacity
         time_end = time.time()
         capacity = len(binary_message) / (time_end - time_start)
-        print(f"Covert channel capacity: {capacity:.2f} bits per second")
+        #print(f"Covert channel capacity: {capacity:.2f} bits per second")
 
     def receive(self, log_file_name, min_size, max_size, threshold):
         # Define a function to process each captured packet
