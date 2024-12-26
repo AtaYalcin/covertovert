@@ -15,9 +15,8 @@ class MyCovertChannel(CovertChannelBase):
         self.stop_event = False
 
     def send(self, log_file_name, min_size, max_size, threshold):
-        """
-        Encodes and sends the covert message using UDP packet size variation.
-        """
+        #Encodes and sends the covert message using UDP packet size variation.
+        
         # Generate a random binary message and log it
         binary_message = self.generate_random_binary_message_with_logging(log_file_name)
 
