@@ -4,9 +4,7 @@ import random
 import time
 
 class MyCovertChannel(CovertChannelBase):
-    SENDER_IP = "172.18.0.2"
-    RECEIVER_IP = "172.18.0.3"
-    UDP_PORT = 12345
+
 
     def __init__(self):
         super().__init__()
@@ -14,7 +12,7 @@ class MyCovertChannel(CovertChannelBase):
         self.received_messages = ""
         self.stop_event = False
 
-    def send(self, log_file_name, min_size, max_size, threshold):
+    def send(self, log_file_name, min_size, max_size, threshold,SENDER_IP,RECEIVER_IP,UDP_PORT):
         #Encodes and sends the covert message using UDP packet size variation.
         
         # Generate a random binary message and log it
@@ -28,26 +26,26 @@ class MyCovertChannel(CovertChannelBase):
             # Determine payload size based on the bit value
             size = self._get_payload_size(bit, min_size, max_size, threshold)
             # Create a packet with the determined size
-            packet = self._create_packet(size)
+            packet = self._create_packet(size,SENDER_IP,RECEIVER_IP,UDP_PORT)
             # Send the packet using the parent class method
             super().send(packet)
 
         # End timing and calculate capacity
         time_end = time.time()
         capacity = len(binary_message) / (time_end - time_start)
-        #print(f"Covert channel capacity: {capacity:.2f} bits per second")
+        print(f"Covert channel capacity: {capacity:.2f} bits per second")
 
-    def receive(self, log_file_name, min_size, max_size, threshold):
+    def receive(self, log_file_name, min_size, max_size, threshold,SENDER_IP,RECEIVER_IP,UDP_PORT):
         # Define a function to process each captured packet
         def packet_processor(pkt):
-            return self._process_packet(pkt, log_file_name, min_size, max_size, threshold)
+            return self._process_packet(pkt, log_file_name, min_size, max_size, threshold,SENDER_IP,RECEIVER_IP,UDP_PORT)
         
         # Define a function to check if sniffing should stop
         def stop_condition(_):
             return self.stop_event
     
         # Start sniffing packets with the defined processor and stop condition
-        sniff(filter=f"udp and port {self.UDP_PORT}", 
+        sniff(filter=f"udp and port {UDP_PORT}", 
               prn=packet_processor,
               stop_filter=stop_condition)
 
@@ -60,14 +58,14 @@ class MyCovertChannel(CovertChannelBase):
         else:
             raise ValueError("Invalid bit value")
 
-    def _create_packet(self, payload_size):
+    def _create_packet(self, payload_size,SENDER_IP,RECEIVER_IP,UDP_PORT):
         # Create a UDP packet with the specified payload size
         payload = Raw(b'X' * payload_size)
-        return IP(dst=self.RECEIVER_IP) / UDP(dport=self.UDP_PORT, sport=self.UDP_PORT) / payload
+        return IP(dst=RECEIVER_IP) / UDP(dport=UDP_PORT, sport=UDP_PORT) / payload
 
-    def _process_packet(self, packet, log_file_name, min_size, max_size, threshold):
+    def _process_packet(self, packet, log_file_name, min_size, max_size, threshold,SENDER_IP,RECEIVER_IP,UDP_PORT):
         # Check if the packet is a UDP packet from the sender
-        if IP in packet and UDP in packet and packet[IP].src == self.SENDER_IP:
+        if IP in packet and UDP in packet and packet[IP].src == SENDER_IP:
             payload = bytes(packet[Raw]) if Raw in packet else b''
             payload_size = len(payload)
 

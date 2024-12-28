@@ -27,13 +27,23 @@ The covert channel capacity is calculated and printed after the transmission is 
 
 
 # Parameters
-Our implementation uses the following parameters:
 
-min_size: The minimum payload size for a packet.
+The following parameters are used in the send function to optimize performance and stealth:
 
-max_size: The maximum payload size for a packet.
+*log_file_name:* The name of the log file where messages will be recorded.
 
-threshold: The size threshold to differentiate between '0' and '1' bits.
+*min_size:* Minimum payload size for a packet.
 
-These parameters can be adjusted in the config.json file to optimize the channel's performance and stealth.
+*max_size:* Maximum payload size for a packet.
+
+*threshold:* Size threshold to differentiate between '0' and '1' bits.
+
+*SENDER_IP:* IP address of the sender.
+
+*RECEIVER_IP:* IP address of the receiver.
+
+*UDP_PORT:* Port number used for sending and receiving UDP packets.
+
+This implementation leverages UDP's flexibility in packet sizes to create an effective covert storage channel while maintaining a focus on stealth and efficiency.
+
 

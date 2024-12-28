@@ -5,6 +5,9 @@
       "min_size": 42,
       "max_size": 90,
       "threshold": 80,
+      "SENDER_IP":"172.18.0.2",
+      "RECEIVER_IP":"172.18.0.3",
+      "UDP_PORT":24680,
       "log_file_name": "Example_UDPTimingInterarrivalChannelSender.log"
     }
   },
@@ -13,6 +16,9 @@
       "min_size": 42,
       "max_size": 90,
       "threshold": 80,
+      "SENDER_IP":"172.18.0.2",
+      "RECEIVER_IP":"172.18.0.3",
+      "UDP_PORT":24680,
       "log_file_name": "Example_UDPTimingInterarrivalChannelReceiver.log"
     }
   }
