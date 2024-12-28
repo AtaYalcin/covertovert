@@ -21,11 +21,6 @@ If the payload size is less than threshold, it's decoded as '0'.
 If the payload size is greater than or equal to threshold, it's decoded as '1'.
 The receiver reconstructs the message by grouping 8 bits into a byte and converting it to a character. The transmission stops when a dot ('.') character is received.
 
-# Performance
-## Capacity
-The covert channel capacity is calculated and printed after the transmission is complete. The exact capacity will depend on the network conditions and the chosen parameters (min_size, max_size, threshold). In our tests, we achieved a transmission rate of approximately X bits per second.
-
-
 # Parameters
 
 The following parameters are used in the send function to optimize performance and stealth:
