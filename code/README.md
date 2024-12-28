@@ -38,7 +38,3 @@ The following parameters are used in the send function to optimize performance a
 *RECEIVER_IP:* IP address of the receiver.
 
 *UDP_PORT:* Port number used for sending and receiving UDP packets.
-
-This implementation leverages UDP's flexibility in packet sizes to create an effective covert storage channel while maintaining a focus on stealth and efficiency.
-
-
