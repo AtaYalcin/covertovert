@@ -23,7 +23,7 @@ The receiver reconstructs the message by grouping 8 bits into a byte and convert
 
 # Performance
 ## Capacity
-The covert channel capacity is calculated and printed after the transmission is complete. The exact capacity will depend on the network conditions and the chosen parameters (min_size, max_size, threshold). In our tests, we achieved a transmission rate of approximately X bits per second (replace X with your actual measured rate).
+The covert channel capacity is calculated and printed after the transmission is complete. The exact capacity will depend on the network conditions and the chosen parameters (min_size, max_size, threshold). In our tests, we achieved a transmission rate of approximately X bits per second.
 
 
 # Parameters
