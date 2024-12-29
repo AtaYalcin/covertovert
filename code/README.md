@@ -1,6 +1,6 @@
 # Covert Storage Channel that exploits Packet Size Variation using UDP [Code: CSC-PSV-UDP]
 
-## Capacity: 38.21 bits per second
+## Capacity: 48.60 bits per second
 
 # Implementation
 Our covert channel implementation uses UDP packet size variation to encode and transmit data covertly. This method falls under the category of covert storage channels.
